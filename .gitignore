@@ -1,0 +1,13 @@
+.env
+
+venv_crewai/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/

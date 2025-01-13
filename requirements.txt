@@ -2,3 +2,23 @@ python-dotenv
 langchain-openai
 crewai
 streamlit
+llama-index>=0.5.6
+
+# ChromaDB
+chromadb
+
+# OpenAI Embedding
+openai
+
+# File processing utilities
+pymupdf
+pillow
+pandas
+openpyxl
+python-docx
+html2text
+beautifulsoup4
+
+# Debugging and utilities
+icecream
+fsspec

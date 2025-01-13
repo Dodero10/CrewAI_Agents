@@ -16,8 +16,6 @@ load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# os.environ["OPENAI_API_KEY"] = ""
-
 llm = ChatOpenAI(model="gpt-4o-mini")
 embed_model = OpenAIEmbedding(model="text-embedding-3-large")
 chroma_client = chromadb.PersistentClient(path="./DB/data")
@@ -42,7 +40,16 @@ sale_agent = Agent(
     role = "Sale",
     goal = "Trả lời câu hỏi của người dùng",
     backstory = """
-        Bạn là một người có kiến thức về quy đổi điểm ngoại ngữ sang bậc trình độ ngoại ngữ của Việt Nam.
+        Bạn là một nhân viên bán hàng chuyên nghiệp. Bạn hãy lắng nghe câu hỏi của người dùng và trả lời thật chính xác.
+    """,
+    llm=llm,
+)
+
+person_info_agent = Agent(
+    role = "Person Info",
+    goal = "Trả lời câu hỏi của người dùng",
+    backstory = """
+        Bạn là một người cung cấp thông tin. Bạn hãy lắng nghe câu hỏi của người dùng và trả lời thật chính xác. Nếu người dùng hỏi bằng ngôn ngữ gì, bạn phải trả lời lại bằng ngôn ngữ đó.
     """,
     llm=llm,
 )
@@ -55,16 +62,17 @@ search_task = Task(
 )
 
 crew = Crew(
-    agents=[sale_agent],
+    agents=[person_info_agent],
     tasks=[search_task],
     manager_llm=llm,
     verbose=True
 )
 
-prompt = "Trình độ ngoại ngữ"
+prompt = "Thông tin liên hệ của công ty"
+prompt2 = "Thông tin về Trương Công Đạt"
 
 inputs = {
-    "user_message": f"{prompt}",
+    "user_message": f"{prompt2}",
 }
 
 response = crew.kickoff(inputs=inputs)

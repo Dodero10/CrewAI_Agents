@@ -3,6 +3,9 @@ langchain-openai
 crewai
 streamlit
 llama-index>=0.5.6
+llama-index-vector-stores-chroma
+theflow
+langchain
 
 # ChromaDB
 chromadb

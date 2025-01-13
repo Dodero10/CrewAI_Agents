@@ -1,5 +1,7 @@
 .env
 
+DB
+
 venv_crewai/
 
 # Python cache files

@@ -19,7 +19,7 @@ def load_data(source_dir):
     return parse_multiple_files(source_dir)
 
 
-def ingest_data(data_dir="./RAG_tools/data/"):
+def ingest_data(data_dir="./4. Sale_Product/data/"):
     documents = load_data(data_dir)
     
     embed_model = OpenAIEmbedding(model="text-embedding-3-large")

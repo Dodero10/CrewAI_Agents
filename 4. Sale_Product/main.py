@@ -36,11 +36,48 @@ class KBSearchTool(BaseTool):
 
         return response
     
-class ProductSaleTool(BaseTool):
-    name: str = "Product Sale tool"
-    description: str = "Trả lời các câu hỏi liên quan đến sản phẩm"
+class ProductSearchTool(BaseTool):
+    name: str = "Product Search tool"
+    description: str = "Trả lời những câu hỏi liên quan đến tìm kiếm thông tin về sản phẩm cụ thể của công công ty"
 
-    def _run(self, user_input: str) -> str:
-        response = query_engine.query(user_input)
+    def _run(self, product_name: str) -> str:
+        product_info = df_product[df_product['name'] == product_name]
+        
+        if not product_info.empty:
+            price = product_info.iloc[0]['price']
+            description = product_info.iloc[0]['description']
+            return f"Thông tin sản phẩm {product_name}: {price}, {description}"
+        else:
+            return f"product_name: {product_name}"
 
-        return response
+sale_agent = Agent(
+    role = "Sale",
+    goal = "Trả lời câu hỏi của người dùng",
+    backstory = """
+        Bạn là một nhân viên bán hàng chuyên nghiệp. Bạn hãy lắng nghe câu hỏi của người dùng và trả lời thật chính xác.
+    """,
+    llm=llm,
+)
+
+search_task = Task(
+    description='Phản hồi tin nhắn của người dùng: {user_message}',
+    expected_output='Một câu trả lời phù hợp với câu hỏi của người dùng.',
+    agent=sale_agent,
+    tools=[KBSearchTool(), ProductSearchTool()]
+)
+
+crew = Crew(
+    agents=[sale_agent],
+    tasks=[search_task],
+    manager_llm=llm,
+    verbose=True
+)
+
+prompt = "cho tôi xin xin thông tin về HŨ CHOCOLATE CRUNCH WITH NUTS - BÁNH SOCOLA HẠT"
+
+inputs = {
+    "user_message": f"{prompt}",
+}
+
+response = crew.kickoff(inputs=inputs)
+

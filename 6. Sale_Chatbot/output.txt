@@ -1,0 +1,93 @@
+(d:\github\CrewAI_Agents\venv_crewai) D:\github\CrewAI_Agents>python "d:\github\CrewAI_Agents\5. Sale_Multi_Product\main.py"
+# Agent: Sale
+## Task: 
+        Phản hồi tin nhắn của người dùng: a xin thông tin thanh rong biển
+
+
+
+# Agent: Sale
+## Using tool: Product Search tool
+## Tool Input:
+"{\"product_name\": \"rong bi\\u1ec3n\"}"
+## Tool Output:
+
+I encountered an error while trying to use the tool. This was the error: 'url'.
+ Tool Product Search tool accepts these inputs: Tool Name: Product Search tool
+Tool Arguments: {'product_name': {'description': None, 'type': 'str'}}
+Tool Description:
+        Trả lời những câu hỏi liên quan đến tìm kiếm thông tin về sản phẩm cụ thể của công công ty.
+        Những loại câu hỏi không liên quan đến tìm kiếm sản phẩm cụ thể như:
+        - Sản phẩm bên em có gì
+        - A xin thông tin sản phẩm bên em
+        - Danh mục sản phẩm bên em có gì
+        - Bên em bán những gì
+        - Bên em có những loại sản phẩm nào
+    .
+Moving on then. I MUST either use a tool (use one at time) OR give my best final answer not both at the same time. To Use the following format:
+
+Thought: you should always think about what to do
+Action: the action to take, should be one of [KB Search tool, Product Search tool]
+Action Input: the input to the action, dictionary enclosed in curly braces
+Observation: the result of the action
+... (this Thought/Action/Action Input/Result can repeat N times)
+Thought: I now can give a great answer
+Final Answer: Your final answer must be the great and the most complete as possible, it must be outcome described
+
+
+
+
+# Agent: Sale
+## Using tool: Product Search tool
+## Tool Input:
+"{\"product_name\": \"rong bi\\u1ec3n\"}"
+## Tool Output:
+
+I encountered an error while trying to use the tool. This was the error: 'url'.
+ Tool Product Search tool accepts these inputs: Tool Name: Product Search tool
+Tool Arguments: {'product_name': {'description': None, 'type': 'str'}}
+Tool Description:
+        Trả lời những câu hỏi liên quan đến tìm kiếm thông tin về sản phẩm cụ thể của công công ty.
+        Những loại câu hỏi không liên quan đến tìm kiếm sản phẩm cụ thể như:
+        - Sản phẩm bên em có gì
+        - A xin thông tin sản phẩm bên em
+        - Danh mục sản phẩm bên em có gì
+        - Bên em bán những gì
+        - Bên em có những loại sản phẩm nào
+    .
+Moving on then. I MUST either use a tool (use one at time) OR give my best final answer not both at the same time. To Use the following format:
+
+Thought: you should always think about what to do
+Action: the action to take, should be one of [KB Search tool, Product Search tool]
+Action Input: the input to the action, dictionary enclosed in curly braces
+Observation: the result of the action
+... (this Thought/Action/Action Input/Result can repeat N times)
+Thought: I now can give a great answer
+Final Answer: Your final answer must be the great and the most complete as possible, it must be outcome described
+
+
+Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+
+
+# Agent: Sale
+## Using tool: KB Search tool
+## Tool Input:
+"{\"user_message\": \"Th\\u00e0nh ph\\u1ed1 H\\u1ed3 Ch\\u00ed Minh\"}"
+## Tool Output:
+NewTommy có thể có văn phòng hoặc cửa hàng tại Thành phố Hồ Chí Minh.
+Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+
+
+# Agent: Sale
+## Using tool: KB Search tool
+## Tool Input:
+"{\"user_message\": \"rong bi\\u1ec3n\"}"
+## Tool Output:
+NewTommy does not produce or distribute seaweed products.
+
+
+# Agent: Sale
+## Final Answer:
+Xin lỗi, nhưng bên em không có sản phẩm rong biển trong danh mục sản phẩm của mình. Nếu bạn cần biết thêm thông tin hoặc có yêu cầu khác, vui lòng cho em biết!
+
+
+response:  Xin lỗi, nhưng bên em không có sản phẩm rong biển trong danh mục sản phẩm của mình. Nếu bạn cần biết thêm thông tin hoặc có yêu cầu khác, vui lòng cho em biết!
